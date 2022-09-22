@@ -7,19 +7,24 @@ on:
 
 jobs:
   build:
+    name: "Linux Test and Build"
     runs-on: ubuntu-latest
 
     steps:
-      - uses: actions/checkout@v3
-      - uses: bazelbuild/setup-bazelisk@v2
-      - name: Mount bazel cache
+      - name: "Checkout"
+        uses: actions/checkout@v3
+
+      - name: "Setup Bazel"
+        uses: bazelbuild/setup-bazelisk@v2
+
+      - name: "Mount bazel cache"
         uses: actions/cache@v3
         with:
           path: "/home/runner/.cache/bazel_linux"
           key: bazel
 
-      - name: Test
+      - name: "Test All"
         run: bazel test //...
 
-      - name: Build
+      - name: "Build All"
         run: bazel build //...

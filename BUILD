@@ -50,6 +50,9 @@ go_binary(
     ] + COMP_DEPS,
 )
 
+archive_version = "1.0.0"
+archive_base_name = "protoc-gen-bq-schema"
+
 pkg_zip(
     name = "protoc_gen_bq_schema_src",
     srcs = glob([
@@ -66,7 +69,7 @@ pkg_zip(
         "README.md",
         "go.mod",
     ]),
-    out = "protoc_gen_bq_schema-v1-src.zip",
+    out = "{}-src-{}.zip".format(archive_base_name, archive_version),
 )
 
 pkg_zip(
@@ -77,5 +80,43 @@ pkg_zip(
         "README.md",
         ":protoc_gen_bq_schema",
     ],
-    out = "protoc_gen_bq_schema-v1.zip",
+    out = "binary.zip",
+    package_file_name = select({
+                               "on_linux": "{}-linux-x86_64-{}.zip".format(archive_base_name, archive_version),
+                               "on_osx_x64": "{}-darwin-x86_64-{}.zip".format(archive_base_name, archive_version),
+                               "on_windows": "{}-windows-x86_64-{}.zip".format(archive_base_name, archive_version),
+                               "on_osx_arm": "{}-darwin-arm.zip-{}".format(archive_base_name, archive_version),
+                           })
+)
+
+config_setting(
+    name = "on_linux",
+    constraint_values = [
+        "@platforms//os:linux",
+        "@platforms//cpu:x86_64",
+    ],
+)
+
+config_setting(
+    name = "on_windows",
+    constraint_values = [
+        "@platforms//os:windows",
+        "@platforms//cpu:x86_64",
+    ],
+)
+
+config_setting(
+    name = "on_osx_x64",
+    constraint_values = [
+        "@platforms//os:osx",
+        "@platforms//cpu:x86_64",
+    ],
+)
+
+config_setting(
+    name = "on_osx_arm",
+    constraint_values = [
+        "@platforms//os:osx",
+        "@platforms//cpu:arm",
+    ],
 )

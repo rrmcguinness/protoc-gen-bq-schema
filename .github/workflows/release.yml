@@ -1,4 +1,4 @@
-name: CI
+name: Release
 
 on:
   push:
@@ -23,7 +23,7 @@ jobs:
       run: bazel build //...
 
     - uses: ncipollo/release-action@v1
-        with:
-          prerelease: true
-          artifacts: "protoc-gen-bq-schema*.zip"
-          token: ${{ secrets.GITHUB_TOKEN }}
+      with:
+        prerelease: true
+        artifacts: "protoc-gen-bq-schema*.zip"
+        token: ${{ secrets.GITHUB_TOKEN }}

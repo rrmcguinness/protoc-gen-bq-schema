@@ -6,7 +6,8 @@ on:
     - '*release*'
 
 jobs:
-  build:
+  build-linux:
+    name: "Linux Build - Release"
     runs-on: ubuntu-latest
     permissions:
       contents: write
@@ -14,7 +15,7 @@ jobs:
     - uses: actions/checkout@v3
     - uses: bazelbuild/setup-bazelisk@v2
     - name: Mount bazel cache
-      uses: actions/cache@v3
+    - uses: actions/cache@v3
       with:
         path: "/home/runner/.cache/bazel_linux"
         key: bazel
@@ -24,6 +25,27 @@ jobs:
 
     - uses: ncipollo/release-action@v1
       with:
-        prerelease: true
+        allowUpdates: true
+        artifacts: "protoc-gen-bq-schema*.zip"
+        token: ${{ secrets.GITHUB_TOKEN }}
+
+  build-mac:
+    name: "Mac OS build - Release"
+    runs-on: macos-latest
+
+    steps:
+    - uses: actions/checkout@v3
+    - uses: bazelbuild/setup-bazelisk@v2
+    - name: Mount bazel cache
+    - uses: actions/cache@v3
+      with:
+        path: "/home/runner/.cache/bazel_osx"
+        key: bazel
+    - name: Test
+      run: bazel test //...
+
+    - uses: ncipollo/release-action@v1
+      with:
+        allowUpdates: true
         artifacts: "protoc-gen-bq-schema*.zip"
         token: ${{ secrets.GITHUB_TOKEN }}

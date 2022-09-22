@@ -18,7 +18,7 @@ load("//:configs/deps.bzl", "COMP_DEPS")
 
 go_proto_library(
     name = "bq_schema_go_proto_lib",
-    importpath = "github.com/GoogleCloudPlatform/protoc-gen-bq-schema/protos",
+    importpath = "github.com/rrmcguinness/protoc-gen-bq-schema/protos",
     proto = "//api:bq_schema_proto_lib",
     visibility = ["//:__subpackages__"],
 )
@@ -30,7 +30,7 @@ go_library(
         "convert.go",
         "protopackage.go",
     ],
-    importpath = "github.com/GoogleCloudPlatform/protoc-gen-bq-schema/converter",
+    importpath = "github.com/rrmcguinness/protoc-gen-bq-schema/converter",
     visibility = ["//:__subpackages__"],
     deps = [
         ":bq_schema_go_proto_lib",

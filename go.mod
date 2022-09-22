@@ -1,9 +1,9 @@
-module github.com/GoogleCloudPlatform/protoc-gen-bq-schema
+module github.com/rrmcguinness/protoc-gen-bq-schema
 
 go 1.15
 
 replace (
-	github.com/GoogleCloudPlatform/protoc-gen-bq-schema/converter => ./internal/converter
+	github.com/rrmcguinness/protoc-gen-bq-schema/converter => ./internal/converter
 )
 
 require (

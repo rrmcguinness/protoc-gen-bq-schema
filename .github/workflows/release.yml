@@ -12,18 +12,23 @@ jobs:
     permissions:
       contents: write
     steps:
-    - uses: actions/checkout@v3
-    - uses: bazelbuild/setup-bazelisk@v2
-    - name: Mount bazel cache
+    - name: "Checkout"
+      uses: actions/checkout@v3
+
+    - name: "Bazel Setup"
+      uses: bazelbuild/setup-bazelisk@v2
+
+    - name: "Mount Bazel cache"
       uses: actions/cache@v3
       with:
         path: "/home/runner/.cache/bazel_linux"
         key: bazel
 
-    - name: Build
+    - name: "Build"
       run: bazel build //...
 
-    - uses: ncipollo/release-action@v1
+    - name: "Release - Linux"
+      uses: ncipollo/release-action@v1
       with:
         allowUpdates: true
         artifacts: "protoc-gen-bq-schema*.zip"
@@ -32,19 +37,27 @@ jobs:
   build-mac:
     name: "Mac OS build - Release"
     runs-on: macos-latest
+    permissions:
+      contents: write
 
     steps:
-    - uses: actions/checkout@v3
-    - uses: bazelbuild/setup-bazelisk@v2
-    - name: Mount bazel cache
+    - name: "Checkout"
+      uses: actions/checkout@v3
+
+    - name: "Setup Bazel"
+      uses: bazelbuild/setup-bazelisk@v2
+
+    - name: "Mount Bazel cache"
       uses: actions/cache@v3
       with:
         path: "/home/runner/.cache/bazel_osx"
         key: bazel
-    - name: Test
-      run: bazel test //...
 
-    - uses: ncipollo/release-action@v1
+    - name: "Test"
+      run: bazel build //...
+
+    - name: "Release - Mac"
+      uses: ncipollo/release-action@v1
       with:
         allowUpdates: true
         artifacts: "protoc-gen-bq-schema*.zip"

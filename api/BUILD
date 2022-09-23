@@ -26,6 +26,7 @@ proto_library(
     deps = [
         "@com_google_protobuf//:descriptor_proto",
     ],
+    visibility = ["//visibility:public"],
 )
 
 doc_markdown_compile(

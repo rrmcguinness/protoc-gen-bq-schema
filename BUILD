@@ -69,7 +69,7 @@ go_binary(
     visibility = ["//visibility:public"]
 )
 
-archive_version = "0.1.2"
+archive_version = "0.1.4"
 archive_base_name = "protoc-gen-bq-schema"
 
 #pkg_zip(

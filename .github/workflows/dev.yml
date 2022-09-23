@@ -20,7 +20,7 @@ jobs:
       - name: "Mount Bazel cache"
         uses: actions/cache@v3
         with:
-          path: "/home/runner/.cache/bazel_linux"
+          path: "/home/runner/.cache/bazel"
           key: bazel
 
       - name: "Test"
@@ -36,7 +36,7 @@ jobs:
     - name: Mount bazel cache
       uses: actions/cache@v3
       with:
-        path: "/home/runner/.cache/bazel_osx"
+        path: "/home/runner/.cache/bazel"
         key: bazel
     - name: Test
       run: bazel test //...

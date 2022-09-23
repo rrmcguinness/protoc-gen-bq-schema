@@ -50,7 +50,7 @@ go_binary(
     ] + COMP_DEPS,
 )
 
-archive_version = "1.0.0"
+archive_version = "0.1.0"
 archive_base_name = "protoc-gen-bq-schema"
 
 #pkg_zip(

@@ -44,6 +44,7 @@ gazelle(
 
 go_library(
     name = "protoc-gen-bq-schema-lib",
+    importpath = "github.com/rrmcguinness/protoc-gen-bq-schema",
     srcs = ["main.go"],
     deps = [
         "//internal/converter",
@@ -91,7 +92,7 @@ pkg_zip(
         "LICENSE",
         "NOTICE",
         "README.md",
-        ":protoc_gen_bq_schema",
+        ":protoc-gen-bq-schema",
     ],
     out = "binary.zip",
     package_file_name = select({

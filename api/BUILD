@@ -29,6 +29,8 @@ proto_library(
     visibility = ["//visibility:public"],
 )
 
+exports_files(["bq_field.proto", "bq_table.proto"])
+
 doc_markdown_compile(
     name = "docs",
     protos = [

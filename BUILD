@@ -17,6 +17,7 @@ load("@com_github_bazelbuild_buildtools//buildifier:def.bzl", "buildifier")
 load("@io_bazel_rules_go//go:def.bzl", "go_binary", "go_library")
 load("//:configs/deps.bzl", "COMP_DEPS")
 load("@rules_pkg//:pkg.bzl", "pkg_zip")
+load("@rules_proto_grpc//:defs.bzl", "proto_plugin")
 
 package(default_visibility = ["//:__subpackages__"])
 
@@ -42,19 +43,21 @@ gazelle(
 # proto_plugin
 # proto_compile_impl
 
-go_library(
-    name = "protoc-gen-bq-schema-lib",
-    importpath = "github.com/rrmcguinness/protoc-gen-bq-schema",
-    srcs = ["main.go"],
-    deps = [
-        "//internal/converter",
-        "//internal/converter:bq-schema-go-proto-lib",
-    ] + COMP_DEPS,
-    visibility = ["//visibility:public"]
+proto_plugin(
+    name="bq_plugin",
+    exclusions = [
+        "google/api",
+        "google/protobuf",
+    ],
+    options = ["paths=source_relative"],
+    outputs = ["{protopath}.schema"],
+    tool = ":protoc-gen-bq-schema",
+    visibility = ["//visibility:public"],
 )
 
 go_binary(
     name = "protoc-gen-bq-schema",
+    importpath = "github.com/rrmcguinness/protoc-gen-bq-schema",
     srcs = [
         "main.go",
     ],

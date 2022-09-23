@@ -14,7 +14,7 @@
 
 load("@bazel_gazelle//:def.bzl", "gazelle")
 load("@com_github_bazelbuild_buildtools//buildifier:def.bzl", "buildifier")
-load("@io_bazel_rules_go//go:def.bzl", "go_binary")
+load("@io_bazel_rules_go//go:def.bzl", "go_binary", "go_library")
 load("//:configs/deps.bzl", "COMP_DEPS")
 load("@rules_pkg//:pkg.bzl", "pkg_zip")
 
@@ -39,8 +39,20 @@ gazelle(
     command = "update-repos",
 )
 
+# proto_plugin
+# proto_compile_impl
+
+go_library(
+    name = "protoc-gen-bq-schema-lib",
+    srcs = ["main.go"],
+    deps = [
+        "//internal/converter",
+    ] + COMP_DEPS,
+    visibility = ["//visibility:public"]
+)
+
 go_binary(
-    name = "protoc_gen_bq_schema",
+    name = "protoc-gen-bq-schema",
     srcs = [
         "main.go",
     ],
@@ -48,9 +60,10 @@ go_binary(
     deps = [
         "//internal/converter",
     ] + COMP_DEPS,
+    visibility = ["//visibility:public"]
 )
 
-archive_version = "0.1.0"
+archive_version = "0.1.1"
 archive_base_name = "protoc-gen-bq-schema"
 
 #pkg_zip(

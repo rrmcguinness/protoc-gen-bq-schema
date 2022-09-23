@@ -64,12 +64,12 @@ go_binary(
     out = "protoc-gen-bq-schema",
     deps = [
         "//internal/converter",
-        "//internal/converter:bq-schema-go-proto-lib",
+        "//internal/converter:api-go-proto-lib",
     ] + COMP_DEPS,
     visibility = ["//visibility:public"]
 )
 
-archive_version = "0.1.4"
+archive_version = "0.1.5"
 archive_base_name = "protoc-gen-bq-schema"
 
 #pkg_zip(

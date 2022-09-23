@@ -18,7 +18,7 @@ load("@rules_proto_grpc//doc:defs.bzl", "doc_markdown_compile")
 package(default_visibility = ["//:__subpackages__"])
 
 proto_library(
-    name = "bq_schema_proto_lib",
+    name = "api",
     srcs = [
         "bq_field.proto",
         "bq_table.proto",
@@ -32,6 +32,6 @@ proto_library(
 doc_markdown_compile(
     name = "docs",
     protos = [
-        ":bq_schema_proto_lib",
+        ":api",
     ],
 )

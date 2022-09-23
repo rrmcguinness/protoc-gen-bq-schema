@@ -93,13 +93,14 @@ rules_proto_grpc_doc_repos()
 
 ## Workspace
 
-Latest Version: 0.1.11-release
+Latest Version: 0.1.0-release
 
 ```python
 http_archive(
     name = "protoc-gen-bq-schema",
-    strip_prefix = "protoc-gen-bq-schema-[VERSION] ",
-    url = "https://github.com/rrmcguinness/protoc-gen-bq-schema/archive/refs/tags/[VERSION] -release.tar.gz",
+    sha256 = "a9a6d4d84d3053f8a5a4a41be918533fe3fba256ea72a0b9798347b237d55881",
+    strip_prefix = "protoc-gen-bq-schema-0.1.0-release",
+    url = "https://github.com/rrmcguinness/protoc-gen-bq-schema/archive/refs/tags/0.1.0-release.tar.gz",
 )
 ```
 

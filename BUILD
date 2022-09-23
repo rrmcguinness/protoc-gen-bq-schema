@@ -48,6 +48,7 @@ go_library(
     srcs = ["main.go"],
     deps = [
         "//internal/converter",
+        "//internal/converter:bq-schema-go-proto-lib",
     ] + COMP_DEPS,
     visibility = ["//visibility:public"]
 )
@@ -60,11 +61,12 @@ go_binary(
     out = "protoc-gen-bq-schema",
     deps = [
         "//internal/converter",
+        "//internal/converter:bq-schema-go-proto-lib",
     ] + COMP_DEPS,
     visibility = ["//visibility:public"]
 )
 
-archive_version = "0.1.1"
+archive_version = "0.1.2"
 archive_base_name = "protoc-gen-bq-schema"
 
 #pkg_zip(

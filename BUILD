@@ -53,24 +53,24 @@ go_binary(
 archive_version = "1.0.0"
 archive_base_name = "protoc-gen-bq-schema"
 
-pkg_zip(
-    name = "protoc_gen_bq_schema_src",
-    srcs = glob([
-        "api/*",
-        "conf/*",
-        "docs/*",
-        "internal/*",
-        "test/*",
-        "main.go",
-        "BUILD",
-        "LICENSE",
-        "NOTICE",
-        "WORKSPACE",
-        "README.md",
-        "go.mod",
-    ]),
-    out = "{}-src-{}.zip".format(archive_base_name, archive_version),
-)
+#pkg_zip(
+#    name = "protoc_gen_bq_schema_src",
+#    srcs = glob([
+#        "api/*",
+#        "conf/*",
+#        "docs/*",
+#        "internal/*",
+#        "test/*",
+#        "main.go",
+#        "BUILD",
+#        "LICENSE",
+#        "NOTICE",
+#        "WORKSPACE",
+#        "README.md",
+#        "go.mod",
+#    ]),
+#    out = "{}-src-{}.zip".format(archive_base_name, archive_version),
+#)
 
 pkg_zip(
     name = "protoc_gen_bq_schema_zip",

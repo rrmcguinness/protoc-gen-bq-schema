@@ -52,6 +52,12 @@ alias (
     visibility = ["//visibility:public"],
 )
 
+alias (
+    name = "bq_go_proto_lib",
+    actual = "//internal/converter:bq_proto_lib",
+    visibility = ["//visibility:public"],
+)
+
 # proto_plugin
 # proto_compile_impl
 
@@ -61,8 +67,7 @@ proto_plugin(
         "google/api",
         "google/protobuf",
     ],
-    options = ["paths=source_relative"],
-    outputs = ["{protopath}.schema"],
+    output_directory= True,
     tool = ":protoc-gen-bq-schema",
     visibility = ["//visibility:public"],
 )
@@ -81,7 +86,7 @@ go_binary(
     visibility = ["//visibility:public"]
 )
 
-archive_version = "0.1.9"
+archive_version = "0.1.0"
 archive_base_name = "protoc-gen-bq-schema"
 
 #pkg_zip(

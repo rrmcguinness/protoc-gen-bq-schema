@@ -42,6 +42,8 @@ func main() {
 	flag.Parse()
 	ok := true
 	glog.Info("Processing code generator request")
+	defer glog.Flush()
+
 	res, err := converter.ConvertFrom(os.Stdin)
 	if err != nil {
 		ok = false
@@ -55,8 +57,11 @@ func main() {
 
 	glog.Info("Serializing code generator response")
 	data, err := proto.Marshal(res)
+
 	if err != nil {
 		glog.Fatal("Cannot marshal response", err)
+	} else {
+		glog.V(2).Info(string(data[:]))
 	}
 	_, err = os.Stdout.Write(data)
 	if err != nil {
@@ -65,7 +70,9 @@ func main() {
 
 	if ok {
 		glog.Info("Succeeded to process code generator request")
+
 	} else {
 		glog.Info("Failed to process code generator but successfully sent the error to protoc")
 	}
+
 }

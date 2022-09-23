@@ -40,6 +40,18 @@ gazelle(
     command = "update-repos",
 )
 
+alias (
+    name = "bq_field_proto",
+    actual = "//api:bq_field_proto",
+    visibility = ["//visibility:public"],
+)
+
+alias (
+    name = "bq_table_proto",
+    actual = "//api:bq_table_proto",
+    visibility = ["//visibility:public"],
+)
+
 # proto_plugin
 # proto_compile_impl
 
@@ -64,12 +76,12 @@ go_binary(
     out = "protoc-gen-bq-schema",
     deps = [
         "//internal/converter",
-        "//internal/converter:api-go-proto-lib",
+        "//internal/converter:bq_proto_lib",
     ] + COMP_DEPS,
     visibility = ["//visibility:public"]
 )
 
-archive_version = "0.1.6"
+archive_version = "0.1.7"
 archive_base_name = "protoc-gen-bq-schema"
 
 #pkg_zip(

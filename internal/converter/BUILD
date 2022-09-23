@@ -17,9 +17,12 @@ load("@io_bazel_rules_go//proto:def.bzl", "go_proto_library")
 load("//:configs/deps.bzl", "COMP_DEPS")
 
 go_proto_library(
-    name = "api-go-proto-lib",
+    name = "bq_proto_lib",
+    protos = [
+        "//api:bq_table_proto",
+        "//api:bq_field_proto",
+    ],
     importpath = "github.com/rrmcguinness/protoc-gen-bq-schema/protos",
-    proto = "//api",
     visibility = ["//:__subpackages__"],
 )
 
@@ -33,6 +36,6 @@ go_library(
     importpath = "github.com/rrmcguinness/protoc-gen-bq-schema/converter",
     visibility = ["//:__subpackages__"],
     deps = [
-        ":api-go-proto-lib",
+        ":bq_proto_lib",
     ] + COMP_DEPS,
 )

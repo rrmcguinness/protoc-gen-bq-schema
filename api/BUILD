@@ -18,22 +18,23 @@ load("@rules_proto_grpc//doc:defs.bzl", "doc_markdown_compile")
 package(default_visibility = ["//:__subpackages__"])
 
 proto_library(
-    name = "api",
-    srcs = [
-        "bq_field.proto",
-        "bq_table.proto",
-    ],
-    deps = [
-        "@com_google_protobuf//:descriptor_proto",
-    ],
-    visibility = ["//visibility:public"],
+    name = "bq_field_proto",
+    srcs = ["bq_field.proto"],
+    import_prefix = "github.com/rrmcguinness/protoc-gen-bq-schema/protos",
+    deps = ["@com_google_protobuf//:descriptor_proto",],
 )
 
-exports_files(["bq_field.proto", "bq_table.proto"])
+proto_library(
+    name = "bq_table_proto",
+    srcs = ["bq_table.proto"],
+    import_prefix = "github.com/rrmcguinness/protoc-gen-bq-schema/protos",
+    deps = ["@com_google_protobuf//:descriptor_proto",],
+)
 
 doc_markdown_compile(
     name = "docs",
     protos = [
-        ":api",
+        ":bq_field_proto",
+        ":bq_table_proto"
     ],
 )

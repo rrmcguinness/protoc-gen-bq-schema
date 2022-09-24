@@ -1,0 +1,4 @@
+User-agent: *
+Disallow: /tags/*
+
+Sitemap: https://rrmcguinness.github.io/protoc-gen-bq-schema/sitemap.xml

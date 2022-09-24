@@ -11,6 +11,7 @@ jobs:
     name: "Linux Test and Build"
     runs-on: ubuntu-latest
 
+    steps:
     - name: "Checkout"
       uses: actions/checkout@v3
 
@@ -27,8 +28,8 @@ jobs:
       run: bazel build //docs/...
 
     - name: Deploy
-        uses: peaceiris/actions-gh-pages@v3
-        if: github.ref == 'refs/heads/main'
-        with:
-          github_token: ${{ secrets.GITHUB_TOKEN }}
-          publish_dir: ./bazel-bin/docs/hugo_site
+      uses: peaceiris/actions-gh-pages@v3
+      if: github.ref == 'refs/heads/main'
+      with:
+        github_token: ${{ secrets.GITHUB_TOKEN }}
+        publish_dir: ./bazel-bin/docs/hugo_site

@@ -1,0 +1,24 @@
+---
+description: >
+  protoc-gen-bq-schema is a plugin for Protocol Buffer Compiler (protoc). 
+  It converts messages written in .proto format into schema files in JSON 
+  for Google's BigQuery. Allowing you to reuse existing data definitions 
+  in '.proto' for BigQuery with this plugin.
+
+images:
+  - "socialmedia2.png"
+
+geekdocToC: 3
+geekdocTagsToMenu: true
+
+geekdocRepo: https://github.com/rrmcguinness/protoc-gen-bq-schema
+geekdocEditPath: edit/main/docs
+
+geekdocSearch: true
+geekdocSearchShowParent: true
+
+geekdocLegalNotice:
+geekdocPrivacyPolicy:
+
+geekdocImageLazyLoading: true
+geekdocDarkModeDim: true

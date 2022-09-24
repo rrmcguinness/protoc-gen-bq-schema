@@ -1,0 +1,56 @@
+syntax = "proto3";
+
+package example.model;
+
+// Go Lang Options
+option go_package = "example/model";
+
+// Java Options
+option java_package = "example.model";
+option java_multiple_files = true;
+
+// Here for illustration
+//import "google/protobuf/timestamp.proto";
+
+import "bq/schema/protos/bq_table.proto";
+import "bq/schema/protos/bq_field.proto";
+
+/*
+ * ISO 3166-1 Country
+ */
+message Country {
+  option (gen_bq_schema.bigquery_opts).table_name = "country_tbl";
+  string id = 1 [
+    (gen_bq_schema.bigquery) = {
+      require: true
+      policy_tags : "private"
+    }
+  ];
+  string name = 2 [
+    (gen_bq_schema.bigquery) = {
+      require: true
+    }
+  ];
+  string alpha2 = 3 [
+    (gen_bq_schema.bigquery) = {
+      require: true
+    }
+  ];
+  string alpha3 = 4 [
+    (gen_bq_schema.bigquery) = {
+      require: true
+    }
+  ];
+  string code = 5;
+  string iso2 = 6 [
+    (gen_bq_schema.bigquery) = {
+      require: true
+    }
+  ];
+  string region = 7;
+  string sub_region = 8;
+  string intermediate_region = 9;
+  string region_code = 10;
+  string sub_region_code = 11;
+  string intermediate_region_code = 12;
+}

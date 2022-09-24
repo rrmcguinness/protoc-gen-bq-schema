@@ -1,0 +1,6 @@
+---
+header:
+  - name: GitHub
+    ref: https://github.com/rrmcguinness/protoc-gen-bq-schema
+    icon: github
+    external: true

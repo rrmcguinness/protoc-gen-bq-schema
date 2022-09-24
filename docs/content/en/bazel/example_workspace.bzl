@@ -1,18 +1,4 @@
-# Copyright 2014 Google Inc.
-#
-# Licensed under the Apache License, Version 2.0 (the "License");
-# you may not use this file except in compliance with the License.
-# You may obtain a copy of the License at
-#
-#    http://www.apache.org/licenses/LICENSE-2.0
-#
-# Unless required by applicable law or agreed to in writing, software
-# distributed under the License is distributed on an "AS IS" BASIS,
-# WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
-# See the License for the specific language governing permissions and
-# limitations under the License.
-
-workspace(name = "ProtocGenBQSchema")
+workspace(name = "your_workspace_name")
 
 load("@bazel_tools//tools/build_defs/repo:http.bzl", "http_archive")
 
@@ -131,63 +117,11 @@ load("@rules_proto_grpc//doc:repositories.bzl", rules_proto_grpc_doc_repos = "do
 rules_proto_grpc_doc_repos()
 
 ###############################################################################
-# Packaging Tool Chain
+# BQ Schema Generator Plugin
 ###############################################################################
-
-load("@bazel_tools//tools/build_defs/repo:http.bzl", "http_archive")
-
 http_archive(
-    name = "rules_pkg",
-    sha256 = "8a298e832762eda1830597d64fe7db58178aa84cd5926d76d5b744d6558941c2",
-    urls = [
-        "https://mirror.bazel.build/github.com/bazelbuild/rules_pkg/releases/download/0.7.0/rules_pkg-0.7.0.tar.gz",
-        "https://github.com/bazelbuild/rules_pkg/releases/download/0.7.0/rules_pkg-0.7.0.tar.gz",
-    ],
-)
-
-load("@rules_pkg//:deps.bzl", "rules_pkg_dependencies")
-
-rules_pkg_dependencies()
-
-###############################################################################
-# Hugo Tool Chain
-###############################################################################
-# Update these to latest
-RULES_HUGO_COMMIT = "02234789fa9f2112807c1642eacb9f9728fc179d"
-
-RULES_HUGO_SHA256 = "4ce20c981ad50ac0c956e85ef991e59b204778bde59d81e40be05450259ae969"
-
-# Use a modified version of the popular rules_hugo, this modified version
-# allows modern Hugo themes to be used.
-http_archive(
-    name = "build_stack_rules_hugo",
-    sha256 = RULES_HUGO_SHA256,
-    strip_prefix = "rules_hugo-%s" % RULES_HUGO_COMMIT,
-    url = "https://github.com/rrmcguinness/rules_hugo/archive/%s.zip" % RULES_HUGO_COMMIT,
-)
-
-load("@build_stack_rules_hugo//hugo:rules.bzl", "hugo_repository")
-
-#
-# Load hugo binary itself
-#
-# Optionally, load a specific version of Hugo, with the 'version' argument
-hugo_repository(
-    name = "hugo",
-    extended = True,
-    version = "0.101.0",
-)
-
-# Create a readable archive from a GitHub Hugo Theme that DOES NOT support the theme layout.
-http_archive(
-    name = "theme_geekdoc",
-    build_file_content = """
-filegroup(
-    name = "files",
-    srcs = glob(["**"]),
-    visibility = ["//visibility:public"],
-)
-    """,
-    sha256 = "7fdd57f7d4450325a778629021c0fff5531dc8475de6c4ec70ab07e9484d400e",
-    url = "https://github.com/thegeeklab/hugo-geekdoc/releases/download/v0.34.2/hugo-geekdoc.tar.gz",
+    name = "protoc-gen-bq-schema",
+    sha256 = "a9a6d4d84d3053f8a5a4a41be918533fe3fba256ea72a0b9798347b237d55881",
+    strip_prefix = "protoc-gen-bq-schema-0.1.0-release",
+    url = "https://github.com/rrmcguinness/protoc-gen-bq-schema/archive/refs/tags/0.1.0-release.tar.gz",
 )

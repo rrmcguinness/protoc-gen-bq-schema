@@ -1,0 +1,67 @@
+[
+  {
+    "name": "id",
+    "type": "STRING",
+    "mode": "REQUIRED",
+    "policyTags": {
+      "names": [
+        "private"
+      ]
+    }
+  },
+  {
+    "name": "name",
+    "type": "STRING",
+    "mode": "REQUIRED"
+  },
+  {
+    "name": "alpha2",
+    "type": "STRING",
+    "mode": "REQUIRED"
+  },
+  {
+    "name": "alpha3",
+    "type": "STRING",
+    "mode": "REQUIRED"
+  },
+  {
+    "name": "code",
+    "type": "STRING",
+    "mode": "NULLABLE"
+  },
+  {
+    "name": "iso2",
+    "type": "STRING",
+    "mode": "REQUIRED"
+  },
+  {
+    "name": "region",
+    "type": "STRING",
+    "mode": "NULLABLE"
+  },
+  {
+    "name": "sub_region",
+    "type": "STRING",
+    "mode": "NULLABLE"
+  },
+  {
+    "name": "intermediate_region",
+    "type": "STRING",
+    "mode": "NULLABLE"
+  },
+  {
+    "name": "region_code",
+    "type": "STRING",
+    "mode": "NULLABLE"
+  },
+  {
+    "name": "sub_region_code",
+    "type": "STRING",
+    "mode": "NULLABLE"
+  },
+  {
+    "name": "intermediate_region_code",
+    "type": "STRING",
+    "mode": "NULLABLE"
+  }
+]

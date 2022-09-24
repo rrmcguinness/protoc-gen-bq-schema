@@ -1,4 +1,9 @@
-# Protocol Documentation
+---
+title: "BQ Protobuf Options"
+weight: 2
+---
+
+## Protocol Documentation
 <a name="top"></a>
 
 ## Table of Contents

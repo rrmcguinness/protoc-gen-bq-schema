@@ -33,7 +33,7 @@ go_library(
         "convert.go",
         "protopackage.go",
     ],
-    importpath = "internal/converter",
+    importpath = "pkg/converter",
     visibility = ["//:__subpackages__"],
     deps = [
         ":bq_proto_lib",

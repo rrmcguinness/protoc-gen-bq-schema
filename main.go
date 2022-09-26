@@ -35,7 +35,7 @@ import (
 	"github.com/golang/glog"
 	plugin "github.com/golang/protobuf/protoc-gen-go/plugin"
 	"google.golang.org/protobuf/proto"
-	"internal/converter"
+	"pkg/converter"
 )
 
 func main() {

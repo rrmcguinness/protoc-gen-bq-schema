@@ -22,6 +22,6 @@ go_test(
         "field_option_test.go",
         "plugin_test.go",
     ],
-    embed = ["//internal/converter"],
+    embed = ["//pkg/converter"],
     deps = COMP_DEPS,
 )

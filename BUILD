@@ -54,7 +54,7 @@ alias(
 
 alias(
     name = "bq_go_proto_lib",
-    actual = "//internal/converter:bq_proto_lib",
+    actual = "//pkg/converter:bq_proto_lib",
     visibility = ["//visibility:public"],
 )
 
@@ -81,8 +81,8 @@ go_binary(
     importpath = "github.com/rrmcguinness/protoc-gen-bq-schema",
     visibility = ["//visibility:public"],
     deps = [
-        "//internal/converter",
-        "//internal/converter:bq_proto_lib",
+        "//pkg/converter",
+        "//pkg/converter:bq_proto_lib",
     ] + COMP_DEPS,
 )
 

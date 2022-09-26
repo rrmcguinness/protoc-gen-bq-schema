@@ -33,7 +33,7 @@ go_library(
         "convert.go",
         "protopackage.go",
     ],
-    importpath = "pkg/converter",
+    importpath = "github.com/rrmcguinness/protoc-gen-bq-schema/pkg/converter",
     visibility = ["//:__subpackages__"],
     deps = [
         ":bq_proto_lib",

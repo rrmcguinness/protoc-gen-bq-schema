@@ -40,19 +40,19 @@ gazelle(
     command = "update-repos",
 )
 
-alias (
+alias(
     name = "bq_field_proto",
     actual = "//api/bq/schema/protos:bq_field_proto",
     visibility = ["//visibility:public"],
 )
 
-alias (
+alias(
     name = "bq_table_proto",
     actual = "//api/bq/schema/protos:bq_table_proto",
     visibility = ["//visibility:public"],
 )
 
-alias (
+alias(
     name = "bq_go_proto_lib",
     actual = "//internal/converter:bq_proto_lib",
     visibility = ["//visibility:public"],
@@ -62,31 +62,32 @@ alias (
 # proto_compile_impl
 
 proto_plugin(
-    name="bq_plugin",
+    name = "bq_plugin",
     exclusions = [
         "google/api",
         "google/protobuf",
     ],
-    output_directory= True,
+    output_directory = True,
     tool = ":protoc-gen-bq-schema",
     visibility = ["//visibility:public"],
 )
 
 go_binary(
     name = "protoc-gen-bq-schema",
-    importpath = "github.com/rrmcguinness/protoc-gen-bq-schema",
     srcs = [
         "main.go",
     ],
     out = "protoc-gen-bq-schema",
+    importpath = "github.com/rrmcguinness/protoc-gen-bq-schema",
+    visibility = ["//visibility:public"],
     deps = [
         "//internal/converter",
         "//internal/converter:bq_proto_lib",
     ] + COMP_DEPS,
-    visibility = ["//visibility:public"]
 )
 
-archive_version = "0.1.0"
+archive_version = "0.1.1"
+
 archive_base_name = "protoc-gen-bq-schema"
 
 #pkg_zip(
@@ -118,11 +119,11 @@ pkg_zip(
     ],
     out = "binary.zip",
     package_file_name = select({
-                               "on_linux": "{}-linux-x86_64-{}.zip".format(archive_base_name, archive_version),
-                               "on_osx_x64": "{}-darwin-x86_64-{}.zip".format(archive_base_name, archive_version),
-                               "on_windows": "{}-windows-x86_64-{}.zip".format(archive_base_name, archive_version),
-                               "on_osx_arm": "{}-darwin-arm.zip-{}".format(archive_base_name, archive_version),
-                           })
+        "on_linux": "{}-linux-x86_64-{}.zip".format(archive_base_name, archive_version),
+        "on_osx_x64": "{}-darwin-x86_64-{}.zip".format(archive_base_name, archive_version),
+        "on_windows": "{}-windows-x86_64-{}.zip".format(archive_base_name, archive_version),
+        "on_osx_arm": "{}-darwin-arm.zip-{}".format(archive_base_name, archive_version),
+    }),
 )
 
 config_setting(

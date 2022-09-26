@@ -2,10 +2,6 @@ module github.com/rrmcguinness/protoc-gen-bq-schema
 
 go 1.15
 
-replace (
-	github.com/rrmcguinness/protoc-gen-bq-schema/converter => ./internal/converter
-)
-
 require (
 	github.com/golang/glog v1.0.0
 	github.com/golang/protobuf v1.5.2

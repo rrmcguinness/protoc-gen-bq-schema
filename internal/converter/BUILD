@@ -18,11 +18,11 @@ load("//:configs/deps.bzl", "COMP_DEPS")
 
 go_proto_library(
     name = "bq_proto_lib",
-    protos = [
-        "//api/bq/schema/protos:bq_table_proto",
-        "//api/bq/schema/protos:bq_field_proto",
-    ],
     importpath = "github.com/rrmcguinness/protoc-gen-bq-schema/protos",
+    protos = [
+        "//api/bq/schema/protos:bq_field_proto",
+        "//api/bq/schema/protos:bq_table_proto",
+    ],
     visibility = ["//:__subpackages__"],
 )
 
@@ -33,7 +33,7 @@ go_library(
         "convert.go",
         "protopackage.go",
     ],
-    importpath = "github.com/rrmcguinness/protoc-gen-bq-schema/converter",
+    importpath = "internal/converter",
     visibility = ["//:__subpackages__"],
     deps = [
         ":bq_proto_lib",

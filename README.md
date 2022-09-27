@@ -16,5 +16,17 @@ I sincerely hope you find this extension useful, especially if you're using Baze
 * [License](LICENSE)
 * [Notice](NOTICE)
 
+## Native Go Build
+
+Generate the Protobuf Files for the protos defined in the API directory
+```shell
+$ go generate ./...
+```
+
+Build the project
+```shell
+$ go build
+```
+
 
 

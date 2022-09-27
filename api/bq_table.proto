@@ -17,7 +17,7 @@ limitations under the License.
 syntax = "proto3";
 package gen_bq_schema;
 
-option go_package = "github.com/rrmcguinness/protoc-gen-bq-schema/protos";
+option go_package = "github.com/rrmcguinness/protoc-gen-bq-schema/protos;protos";
 
 import "google/protobuf/descriptor.proto";
 

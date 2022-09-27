@@ -22,8 +22,11 @@ usage:
 $ bin/protoc --bq-schema_out=path/to/outdir foo.proto
 */
 
+// Ensure the generated directory exists
+//go:generate mkdir -p ./protos
+
 // Protobuf code for extensions are generated --
-//go:generate protoc --go_out=. --go_opt=module=github.com/rmcguinness/protoc-gen-bq-schema bq_table.proto bq_field.proto
+//go:generate protoc --go_out=./protos --go_opt=Mapi/bq_table.proto=. api/bq_table.proto --go_opt=Mapi/bq_field.proto=. api/bq_field.proto
 
 package main
 

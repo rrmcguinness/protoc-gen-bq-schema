@@ -124,12 +124,12 @@ func registerType(pkgName *string, msg *descriptor.DescriptorProto, comments Com
 }
 
 func convertField(
-		curPkg *ProtoPackage,
-		desc *descriptor.FieldDescriptorProto,
-		msgOpts *protos.BigQueryMessageOptions,
-		parentMessages map[*descriptor.DescriptorProto]bool,
-		comments Comments,
-		path string) (*Field, error) {
+	curPkg *ProtoPackage,
+	desc *descriptor.FieldDescriptorProto,
+	msgOpts *protos.BigQueryMessageOptions,
+	parentMessages map[*descriptor.DescriptorProto]bool,
+	comments Comments,
+	path string) (*Field, error) {
 
 	field := &Field{
 		Name: desc.GetName(),
@@ -256,8 +256,8 @@ func convertExtraField(curPkg *ProtoPackage, extraFieldDefinition string, parent
 }
 
 func convertFieldsForType(curPkg *ProtoPackage,
-		typeName string,
-		parentMessages map[*descriptor.DescriptorProto]bool) ([]*Field, error) {
+	typeName string,
+	parentMessages map[*descriptor.DescriptorProto]bool) ([]*Field, error) {
 	recordType, ok, comments, path := curPkg.lookupType(typeName)
 	if !ok {
 		return nil, fmt.Errorf("no such message type named %s", typeName)
@@ -272,12 +272,12 @@ func convertFieldsForType(curPkg *ProtoPackage,
 }
 
 func convertMessageType(
-		curPkg *ProtoPackage,
-		msg *descriptor.DescriptorProto,
-		opts *protos.BigQueryMessageOptions,
-		parentMessages map[*descriptor.DescriptorProto]bool,
-		comments Comments,
-		path string) (schema []*Field, err error) {
+	curPkg *ProtoPackage,
+	msg *descriptor.DescriptorProto,
+	opts *protos.BigQueryMessageOptions,
+	parentMessages map[*descriptor.DescriptorProto]bool,
+	comments Comments,
+	path string) (schema []*Field, err error) {
 
 	if parentMessages[msg] {
 		glog.Infof("Detected recursion for message %s, ignoring subfields", *msg.Name)

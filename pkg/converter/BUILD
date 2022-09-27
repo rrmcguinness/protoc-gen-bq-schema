@@ -11,8 +11,7 @@
 # WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
 # See the License for the specific language governing permissions and
 # limitations under the License.
-
-load("@io_bazel_rules_go//go:def.bzl", "go_library")
+load("@io_bazel_rules_go//go:def.bzl", "go_library", "go_test")
 load("@io_bazel_rules_go//proto:def.bzl", "go_proto_library")
 load("//:configs/deps.bzl", "COMP_DEPS")
 
@@ -20,8 +19,8 @@ go_proto_library(
     name = "bq_proto_lib",
     importpath = "github.com/rrmcguinness/protoc-gen-bq-schema/protos",
     protos = [
-        "//api/bq/schema/protos:bq_field_proto",
-        "//api/bq/schema/protos:bq_table_proto",
+        "//api:bq_field_proto",
+        "//api:bq_table_proto",
     ],
     visibility = ["//:__subpackages__"],
 )
@@ -38,4 +37,15 @@ go_library(
     deps = [
         ":bq_proto_lib",
     ] + COMP_DEPS,
+)
+
+go_test(
+    name = "test",
+    srcs = [
+        "comments_test.go",
+        "field_option_test.go",
+        "plugin_test.go",
+    ],
+    embed = [":converter"],
+    deps = COMP_DEPS,
 )

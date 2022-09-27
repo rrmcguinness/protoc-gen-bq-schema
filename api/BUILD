@@ -20,21 +20,21 @@ package(default_visibility = ["//:__subpackages__"])
 proto_library(
     name = "bq_field_proto",
     srcs = ["bq_field.proto"],
-    strip_import_prefix="/api",
-    deps = ["@com_google_protobuf//:descriptor_proto",],
+    import_prefix = "bq/schema/protos",
+    deps = ["@com_google_protobuf//:descriptor_proto"],
 )
 
 proto_library(
     name = "bq_table_proto",
     srcs = ["bq_table.proto"],
-    strip_import_prefix="/api",
-    deps = ["@com_google_protobuf//:descriptor_proto",],
+    import_prefix = "bq/schema/protos",
+    deps = ["@com_google_protobuf//:descriptor_proto"],
 )
 
 doc_markdown_compile(
     name = "docs",
     protos = [
         ":bq_field_proto",
-        ":bq_table_proto"
+        ":bq_table_proto",
     ],
 )

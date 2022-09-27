@@ -42,13 +42,13 @@ gazelle(
 
 alias(
     name = "bq_field_proto",
-    actual = "//api/bq/schema/protos:bq_field_proto",
+    actual = "//api:bq_field_proto",
     visibility = ["//visibility:public"],
 )
 
 alias(
     name = "bq_table_proto",
-    actual = "//api/bq/schema/protos:bq_table_proto",
+    actual = "//api:bq_table_proto",
     visibility = ["//visibility:public"],
 )
 

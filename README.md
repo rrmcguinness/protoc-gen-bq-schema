@@ -16,12 +16,83 @@ I sincerely hope you find this extension useful, especially if you're using Baze
 * [License](LICENSE)
 * [Notice](NOTICE)
 
+## Using the Bazel Tool Chain
+
+### Dependencies
+
+* [Bazelisk](https://github.com/bazelbuild/bazelisk)
+
+> NOTE: Test the execution, bazelisk version; then create an alias for 'bazel'.
+
+```shell
+# Build
+bazel build //...
+
+# Test
+bazel test //...
+
+# Test Coverage
+bazel coverage //...
+```
+
+### Make Targets analogs
+```shell
+make bazel
+make bazel-test
+make bazel-coverate
+```
+
+
+## Using the Go Tool Chain
+
+If you are using Native Go, and Protoc, there are incompatibilities between various versions
+which impact the build integrity. This IS NOT the case if you use the Bazel tool chain,
+as all dependencies are managed.
+
+### Dependencies
+
+* Go - Version 1.19 or later.
+* Protobuf Compiler - Version 21.5 (Tested)
+
+## Build with Make
+
+```shell
+
+# Make all (uses native go tool chain)
+$ make all
+
+# Run tests
+$ make test
+
+# Run Generate Files
+$ make generate
+
+# Build
+$ make compile
+
+# Clean
+$ make clean
+```
+
 ## Native Go Build
 
-Generate the Protobuf Files for the protos defined in the API directory
+### Generate
+
+Generate the Protobuf Files for the protos defined in the API directory.
+
+> NOTE: These generated files ONLY IMPACT the Go tool chain.
+
 ```shell
 $ go generate ./...
 ```
+
+### Test
+
+```shell
+$ go test ./...
+```
+
+### Build
 
 Build the project
 ```shell

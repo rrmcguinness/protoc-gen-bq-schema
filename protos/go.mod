@@ -1,3 +1,3 @@
-module github.com/rmcguinness/protoc-gen-bq-schema/protos
+module github.com/rrmcguinness/protoc-gen-bq-schema/protos
 
 go 1.19

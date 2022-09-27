@@ -2,6 +2,8 @@ module github.com/rrmcguinness/protoc-gen-bq-schema
 
 go 1.15
 
+replace github.com/rrmcguinness/protoc-gen-bq-schema => ./
+
 replace github.com/rrmcguinness/protoc-gen-bq-schema/protos => ./protos
 
 require (
